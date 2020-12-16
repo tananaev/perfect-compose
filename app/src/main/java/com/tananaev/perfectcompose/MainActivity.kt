@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
+import com.tananaev.perfectcompose.increment.IncrementPlugin
 import com.tananaev.perfectcompose.ui.PerfectComposeTheme
 
 class MainActivity : AppCompatActivity() {
