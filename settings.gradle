@@ -1,0 +1,2 @@
+rootProject.name = "Perfect Compose"
+include ':app'
