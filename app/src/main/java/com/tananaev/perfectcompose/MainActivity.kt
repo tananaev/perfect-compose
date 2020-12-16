@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import com.tananaev.perfectcompose.increment.IncrementPlugin
@@ -27,10 +28,22 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun MainScreen() {
+    var incrementAttached by remember { mutableStateOf(true) }
+    var decrementAttached by remember { mutableStateOf(true) }
+
     Column {
-        IncrementPlugin()
-        DecrementPlugin()
-        BasicText(text = "Sum ${0}")
+        Button(onClick = { incrementAttached = !incrementAttached }) {
+            BasicText(text = "Increment Plugin Toggle")
+        }
+        Button(onClick = { decrementAttached = !decrementAttached }) {
+            BasicText(text = "Decrement Plugin Toggle")
+        }
+        if (incrementAttached) {
+            IncrementPlugin()
+        }
+        if (decrementAttached) {
+            DecrementPlugin()
+        }
     }
 }
 
