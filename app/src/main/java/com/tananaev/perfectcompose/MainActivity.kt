@@ -2,6 +2,7 @@ package com.tananaev.perfectcompose
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             PerfectComposeTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    MainScreen()
                 }
             }
         }
@@ -24,14 +25,18 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    BasicText(text = "Hello $name!")
+fun MainScreen() {
+    Column {
+        IncrementPlugin()
+        DecrementPlugin()
+        BasicText(text = "Sum ${0}")
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     PerfectComposeTheme {
-        Greeting("Android")
+        MainScreen()
     }
 }
