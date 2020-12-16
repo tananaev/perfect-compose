@@ -13,12 +13,16 @@ interface IncrementPluginComponent {
     fun interactor(): IncrementInteractor
 }
 
+interface IncrementPluginCallback {
+    fun onResult(count: Int)
+}
+
 @Composable
-fun IncrementPlugin() {
+fun IncrementPlugin(callback: IncrementPluginCallback) {
     val context = AmbientContext.current
     val interactor = remember(context) {
         DaggerIncrementPluginComponent.builder()
-            .incrementModule(IncrementModule(context))
+            .incrementModule(IncrementModule(context, callback))
             .build()
             .interactor()
     }

@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import com.tananaev.perfectcompose.increment.IncrementPlugin
+import com.tananaev.perfectcompose.increment.IncrementPluginCallback
 import com.tananaev.perfectcompose.ui.PerfectComposeTheme
 
 class MainActivity : AppCompatActivity() {
@@ -28,22 +29,21 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun MainScreen() {
+    var total by remember { mutableStateOf(0) }
     var incrementAttached by remember { mutableStateOf(true) }
-    var decrementAttached by remember { mutableStateOf(true) }
 
     Column {
         Button(onClick = { incrementAttached = !incrementAttached }) {
-            BasicText(text = "Increment Plugin Toggle")
-        }
-        Button(onClick = { decrementAttached = !decrementAttached }) {
-            BasicText(text = "Decrement Plugin Toggle")
+            BasicText(text = "Plugin Toggle")
         }
         if (incrementAttached) {
-            IncrementPlugin()
+            IncrementPlugin(object : IncrementPluginCallback {
+                override fun onResult(count: Int) {
+                    total += count
+                }
+            })
         }
-        if (decrementAttached) {
-            DecrementPlugin()
-        }
+        BasicText(text = "Total: $total")
     }
 }
 
