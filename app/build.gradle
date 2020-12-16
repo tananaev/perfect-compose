@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion "android-Q"
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.tananaev.perfectcompose"
-        minSdkVersion "Q"
-        targetSdkVersion "Q"
+        minSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
